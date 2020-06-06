@@ -26,9 +26,9 @@
         <td>
           @foreach($website->week_report as $day)
             @if($day)
-              <img src="{{asset('images/times-circle.png')}}" width="15px">
+              <img src="{{env('IMAGE_BASE_URL').'/images/times-circle.png'}}" width="15px">
             @else
-              <img src="{{asset('images/check-circle.svg.png')}}" width="15px">
+              <img src="{{env('IMAGE_BASE_URL').'/images/check-circle.svg.png'}}" width="15px">
             @endif
           @endforeach
         </td>
