@@ -87,11 +87,8 @@
                                         <td>{{$website->domain}}</td>
                                         <td>
                                             @foreach($website->testLogs->reverse() as $test_log)
-                                                @if($test_log->status)
-                                                    <i class="fa fa-check-circle green" data-toggle="tooltip" data-placement="top" title="{{\Carbon\Carbon::parse($test_log->test_at)->diffForHumans()}}"></i>
-                                                @else
-                                                    <i class="fa fa-times-circle grey"></i>
-                                                @endif
+                                                
+                                                    <i class="fa @if($test_log->status) fa-check-circle green @else fa-times-circle grey @endif" data-toggle="tooltip" data-placement="top" title="{{\Carbon\Carbon::parse($test_log->test_at)->diffForHumans()}}"></i>
                                             @endforeach
                                         </td>
                                         <td>{{\Carbon\Carbon::parse($website->test_at)->diffForHumans()}}</td>
@@ -99,7 +96,7 @@
                                             <form action="{{route('website.test', $website->id)}}" method="POST">
                                             @csrf
                                                 <button type="submit" class="btn btn-primary">
-                                                {{ __('Test Again') }}
+                                                {{ __('Test Now') }}
                                                 </button>
                                             </form>
                                         </td>
