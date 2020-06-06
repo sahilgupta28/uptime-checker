@@ -52,4 +52,9 @@ class WebsiteRepository implements WebsiteInterface
     {
         return $this->model->all();
     }
+
+    public function allFail()
+    {
+        return $this->model->where('status', false)->get();
+    }
 }

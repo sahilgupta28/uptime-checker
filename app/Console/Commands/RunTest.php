@@ -14,7 +14,7 @@ class RunTest extends Command
      *
      * @var string
      */
-    protected $signature = 'test:run';
+    protected $signature = 'test:run {--fail} {--queue}';
 
     /**
      * The console command description.
@@ -41,7 +41,7 @@ class RunTest extends Command
      */
     public function handle()
     {
-        $websites = $this->website->all();
+        $websites = $this->getWebsites();
         $bar = $this->output->createProgressBar(count($websites));
         $bar->start();
 
@@ -53,5 +53,13 @@ class RunTest extends Command
             $bar->advance();
         }
         $bar->finish();
+    }
+
+    private function getWebsites()
+    {
+        if ($this->option('fail')) {
+            return $this->website->allFail();
+        }
+        return $this->website->all();
     }
 }
