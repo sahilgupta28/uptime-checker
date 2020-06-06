@@ -29,6 +29,7 @@ class WebsiteController extends Controller
         $inputs['status'] = (new UptimeChecker())->run($inputs['domain']);
         $inputs['test_at'] = date(config('constants.DATE_TIME_FORMAT'));
         $website = $this->website->create($inputs);
+        Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
         return redirect()->back()->with('alert-success', __('New website added successfully'));
     }
 
