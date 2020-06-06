@@ -38,7 +38,14 @@ class WebsiteRepository implements WebsiteInterface
             \App\QueryFilters\Website\LoginUser::class
         ])
         ->thenReturn()
-        ->paginate(config('constants.DEFAULT.PAGINATION'));
+        ->get()
+        ->map(function ($website) {
+            $website->setRelation(
+                'testLogs',
+                $website->testLogs->take(10)
+            );
+            return $website;
+        });
     }
 
     public function all()

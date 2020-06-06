@@ -10928,3 +10928,11 @@ a.text-dark:focus {
   }
 }
 
+body .fa.green {
+  color: #38c172;
+}
+
+body .fa.grey {
+  color: #808080;
+}
+

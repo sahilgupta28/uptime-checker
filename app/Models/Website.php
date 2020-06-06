@@ -34,4 +34,10 @@ class Website extends Model
         'status' => 'Status is required.',
         'test_at' => 'Test date time is required.'
     ];
+
+    public function testLogs()
+    {
+        return $this->hasMany(\App\Models\TestLog::class, 'website_id', 'id')
+            ->orderBy('id', config('constants.DEFAULT.SORT'));
+    }
 }

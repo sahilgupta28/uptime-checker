@@ -86,11 +86,13 @@
                                         <td>{{$website->title}}</td>
                                         <td>{{$website->domain}}</td>
                                         <td>
-                                            @if($website->status)
-                                                <span class="badge badge-pill badge-success">UP</span>
-                                            @else
-                                                <span class="badge badge-pill badge-danger">DOWN</span>
-                                            @endif
+                                            @foreach($website->testLogs->reverse() as $test_log)
+                                                @if($test_log->status)
+                                                    <i class="fa fa-check-circle green" data-toggle="tooltip" data-placement="top" title="{{\Carbon\Carbon::parse($test_log->test_at)->diffForHumans()}}"></i>
+                                                @else
+                                                    <i class="fa fa-times-circle grey"></i>
+                                                @endif
+                                            @endforeach
                                         </td>
                                         <td>{{\Carbon\Carbon::parse($website->test_at)->diffForHumans()}}</td>
                                         <td>
@@ -105,7 +107,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{ $websites->links() }}
                         </div>
                         <!--/table -->
                     </div>
