@@ -24,8 +24,8 @@
         <td>{{$loop->iteration}}</td>
         <td>{{$website->title}} <small>{{$website->domain}}</small></td>
         <td>
-          @foreach($website->week_report as $day)
-            @if($day)
+          @foreach($website->week_report as $status)
+            @if($status)
               <img src="{{env('IMAGE_BASE_URL').'/images/times-circle.png'}}" width="15px">
             @else
               <img src="{{env('IMAGE_BASE_URL').'/images/check-circle.svg.png'}}" width="15px">
