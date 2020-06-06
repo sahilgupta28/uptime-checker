@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Website extends Model
+{
+    protected $table = 'websites';
+    protected $fillable = [
+        'title',
+        'user_id',
+        'domain',
+        'description',
+        'status',
+        'test_at'
+    ];
+    protected $hidden = ['updated_at', 'created_at'];
+
+    protected static $rules = [
+        'title' => ['max:30', 'required', 'string'],
+        'user_id' => ['required', 'Numeric', 'exists:users,id'],
+        'domain' => ['max:100', 'required', 'string'],
+        'description' => 'required',
+        'status' => 'required',
+        'test_at' => 'required  '
+    ];
+
+    protected static $messages = [
+        'title' => 'Title is required.',
+        'user_id' => 'User Id is required',
+        'domain' => 'Domain is required.',
+        'description' => 'description is required.',
+        'status' => 'Status is required.',
+        'test_at' => 'Test date time is required.'
+    ];
+}
