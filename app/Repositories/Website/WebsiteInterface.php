@@ -13,4 +13,6 @@ interface WebsiteInterface
     public function list();
 
     public function all();
+
+    public function allFail();
 }

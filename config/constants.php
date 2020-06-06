@@ -7,5 +7,7 @@ return [
         'OFFSET' => 0,
         'SORT' => 'desc',
         'PAGINATION' => 5
-    ]
+    ],
+    'ROUND' => 2,
+    'WEEK_MINUTES' => 7 * 24 * 60 * 60
 ];
