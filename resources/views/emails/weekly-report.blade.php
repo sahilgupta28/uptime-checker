@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800" rel="stylesheet">
-    <title>@env('APP_NAME')</title>
+    <title>{{ env('APP_NAME') }}</title>
   </head>
   <body>
     <center><h1>Weekly Report</h1></center>
