@@ -19,7 +19,7 @@ class WebsiteController extends Controller
     public function index()
     {
         $websites = $this->website->list();
-        return view('home', compact('websites'));
+        return view('dashboard.index', compact('websites'));
     }
 
     public function save(saveRequest $request)
@@ -41,5 +41,11 @@ class WebsiteController extends Controller
         $this->website->update($website->id, $website->toArray());
         Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
         return redirect()->back()->with('alert-success', __('Test run successfully.'));
+    }
+
+    public function list()
+    {
+        $websites = $this->website->all();
+        return $this->showSuccessRequest($websites, __('websites list.'), 200);
     }
 }
