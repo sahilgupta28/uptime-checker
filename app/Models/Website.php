@@ -3,9 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Website extends Model
 {
+    use Notifiable;
+
+    public function routeNotificationFor($driver)
+    {
+        return env('SLACK_HOOK');
+    }
+
     protected $table = 'websites';
     protected $fillable = [
         'title',
@@ -16,6 +24,11 @@ class Website extends Model
         'test_at'
     ];
     protected $hidden = ['updated_at', 'created_at'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'test_at'
+    ];
 
     protected static $rules = [
         'title' => ['max:30', 'required', 'string'],
