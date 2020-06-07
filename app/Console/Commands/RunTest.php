@@ -50,6 +50,10 @@ class RunTest extends Command
             $website->status = (new UptimeChecker())->run($website->domain);
             $this->website->update($website->id, $website->toArray());
             Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
+            if (!$website->status) {
+                $this->website->notify($website->id);
+            }
+
             $bar->advance();
         }
         $bar->finish();

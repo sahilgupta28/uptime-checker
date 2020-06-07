@@ -4,6 +4,7 @@ namespace App\Repositories\Website;
 
 use App\Models\Website;
 use Illuminate\Pipeline\Pipeline;
+use App\Notifications\TestFailNotification;
 
 class WebsiteRepository implements WebsiteInterface
 {
@@ -56,5 +57,10 @@ class WebsiteRepository implements WebsiteInterface
     public function allFail()
     {
         return $this->model->where('status', false)->get();
+    }
+
+    public function notify($id)
+    {
+        return $this->model->whereId($id)->first()->notify(new TestFailNotification());
     }
 }

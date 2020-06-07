@@ -15,4 +15,6 @@ interface WebsiteInterface
     public function all();
 
     public function allFail();
+
+    public function notify($id);
 }

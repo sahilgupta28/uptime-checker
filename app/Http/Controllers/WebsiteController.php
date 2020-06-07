@@ -29,6 +29,10 @@ class WebsiteController extends Controller
         $inputs['status'] = (new UptimeChecker())->run($inputs['domain']);
         $inputs['test_at'] = date(config('constants.DATE_TIME_FORMAT'));
         $website = $this->website->create($inputs);
+        if (!$website->status) {
+            $this->website->notify($id);
+        }
+
         Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
         return redirect()->back()->with('alert-success', __('New website added successfully'));
     }
@@ -40,6 +44,10 @@ class WebsiteController extends Controller
         $website->status = (new UptimeChecker())->run($website->domain);
         $this->website->update($website->id, $website->toArray());
         Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
+        if (!$website->status) {
+            $this->website->notify($id);
+        }
+
         return redirect()->back()->with('alert-success', __('Test run successfully.'));
     }
 
