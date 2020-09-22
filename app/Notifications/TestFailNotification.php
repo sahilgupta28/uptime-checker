@@ -30,7 +30,10 @@ class TestFailNotification extends Notification
         return (new SlackMessage)
                     ->from('Uptime Checker')
                      ->attachment(function ($attachment) use ($notifiable) {
-                         $attachment->title('Your website is down', env('IMAGE_BASE_URL'))
+                         $attachment->title(
+                             'Your website is down | ' . env('APP_ENV'),
+                             env('IMAGE_BASE_URL')
+                         )
                                ->fields([
                                    'Title' => $notifiable->title,
                                    'Domain' => $notifiable->domain,
