@@ -9,36 +9,15 @@ use Artisan;
 
 class RunTest extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'test:run {--fail} {--queue}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Run all Test.';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct(WebsiteInterface $website)
     {
         parent::__construct();
         $this->website = $website;
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
         $websites = $this->getWebsites();
