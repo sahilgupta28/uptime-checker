@@ -22,6 +22,7 @@ class UptimeChecker
 
     private function executeCmd($url)
     {
+        $url = strtolower($url);
         exec("curl -sSL -D - $url -o /dev/null", $output);
         return $output;
     }
