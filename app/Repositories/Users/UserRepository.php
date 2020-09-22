@@ -28,6 +28,11 @@ class UserRepository implements UserInterface
         return $this->model->create($attributes);
     }
 
+    public function update(int $id, array $attributes)
+    {
+        return $this->model->find($id)->fill($attributes)->save();
+    }
+
     public function find(int $id)
     {
         return $this->model->findOrFail($id);

@@ -37,6 +37,13 @@ class WebsiteController extends Controller
         return redirect()->back()->with('alert-success', __('New website added successfully'));
     }
 
+    public function update(saveRequest $request, $id)
+    {
+        $inputs = $request->validated();
+        $this->website->update($id, $inputs);
+        return redirect()->back()->with('alert-success', __('New website added successfully'));
+    }
+
     public function test($id)
     {
         $website = $this->website->find($id);
@@ -55,5 +62,11 @@ class WebsiteController extends Controller
     {
         $websites = $this->website->all();
         return $this->showSuccessRequest($websites, __('websites list.'), 200);
+    }
+
+    public function show(int $id)
+    {
+        $website = $this->website->find($id);
+        return view('website.show', compact('website'));
     }
 }

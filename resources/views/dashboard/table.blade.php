@@ -15,7 +15,8 @@
             @foreach($websites as $website)
             <tr>
                 <th class="border-gray-500 bg-gray-300 border px-4 py-2">{{$loop->iteration}}</th>
-                <td class="border-gray-500 bg-gray-300 border px-4 py-2">{{$website->title}}</td>
+                <td class="border-gray-500 bg-gray-300 border px-4 py-2">
+                    <a href="{{ route('website.show',$website->id) }}">{{$website->title}}</a></td>
                 <td class="border-gray-500 bg-gray-300 border px-4 py-2">{{$website->domain}}</td>
                 <td class="border-gray-500 bg-gray-300 border px-4 py-2">
                     @foreach($website->testLogs->reverse() as $test_log)

@@ -11,7 +11,7 @@ class Website extends Model
 
     public function routeNotificationFor($driver)
     {
-        return env('SLACK_HOOK');
+        return $this->slack_hook;
     }
 
     protected $table = 'websites';
@@ -21,7 +21,8 @@ class Website extends Model
         'domain',
         'description',
         'status',
-        'test_at'
+        'test_at',
+        'slack_hook'
     ];
     protected $hidden = ['updated_at', 'created_at'];
     protected $dates = [

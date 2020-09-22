@@ -16,6 +16,13 @@ class saveRequest extends FormRequest
     {
         $this->request_method = $request->method;
         $this->user_id = $request->id;
+        $this->rules = [
+            'title' => 'max:30|required|string',
+            'user_id' => 'required|numeric|exists:users,id',
+            'domain' => 'max:100|required|string',
+            'description' => 'required',
+            'slack_hook' => 'sometimes|string'
+        ];
     }
 
     public function authorize()
@@ -25,12 +32,15 @@ class saveRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            'title' => 'max:30|required|string',
-            'user_id' => 'required|Numeric|exists:users,id',
-            'domain' => 'max:100|required|string',
-            'description' => 'required'
-        ];
+        if ($this->request_method == 'PUT') {
+            $this->updateValidation();
+        }
+        return $this->rules;
+    }
+
+    private function updateValidation()
+    {
+        $this->rules['id'] = 'required|numeric|exists:websites,id';
     }
 
     protected function failedValidation(Validator $validator)

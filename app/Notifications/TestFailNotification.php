@@ -18,6 +18,10 @@ class TestFailNotification extends Notification
 
     public function via($notifiable)
     {
+        if (!$notifiable->slack_hook) {
+            return false;
+        }
+
         return ['slack'];
     }
 
