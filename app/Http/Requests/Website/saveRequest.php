@@ -21,7 +21,7 @@ class saveRequest extends FormRequest
             'user_id' => 'required|numeric|exists:users,id',
             'domain' => 'max:100|required|string',
             'description' => 'required',
-            'slack_hook' => 'sometimes|string'
+            'slack_hook' => 'nullable|string|regex:' . config('constants.SLACK_REG')
         ];
     }
 

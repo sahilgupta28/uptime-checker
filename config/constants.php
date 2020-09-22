@@ -19,5 +19,6 @@ return [
         'GITHUB' => 'https://github.com/sahilgupta28',
         'STACK_OVERFLOW' => 'https://stackoverflow.com/users/9606475/sahil-gupta',
         'BLOG' => 'https://sahilgupta1.blogspot.com/'
-    ]
+    ],
+    'SLACK_REG' => '~\b(https?://)hooks\.slack\.com/services/(\S+\b)/(\S+\b)/(\S+\b)~'
 ];
