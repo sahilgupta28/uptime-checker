@@ -28,18 +28,18 @@ class TestFailNotification extends Notification
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-                    ->from('Uptime Checker')
-                     ->attachment(function ($attachment) use ($notifiable) {
-                         $attachment->title(
-                             'Your website is down | ' . env('APP_ENV'),
-                             env('IMAGE_BASE_URL')
-                         )
-                               ->fields([
-                                   'Title' => $notifiable->title,
-                                   'Domain' => $notifiable->domain,
-                                   'Status' => 'FAIL',
-                                   'Tested At' => $notifiable->test_at->format('M d, Y H:i')
-                               ]);
-                     });
+                        ->from('Uptime Checker')
+                         ->attachment(function ($attachment) use ($notifiable) {
+                             $attachment->title(
+                                 'Your website is down | ' . env('APP_ENV'),
+                                 env('IMAGE_BASE_URL')
+                             )
+                                   ->fields([
+                                       'Title' => $notifiable->title,
+                                       'Domain' => $notifiable->domain,
+                                       'Status' => 'FAIL',
+                                       'Tested At' => $notifiable->test_at->format('M d, Y H:i')
+                                   ]);
+                         });
     }
 }
