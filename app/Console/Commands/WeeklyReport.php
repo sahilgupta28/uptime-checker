@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Mail;
 
 class WeeklyReport extends Command
 {
+    protected $signature = 'report:generate';
+
     protected $description = "It'll generate weekly reports";
 
     public function __construct(UserInterface $user)
