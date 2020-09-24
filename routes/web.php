@@ -16,5 +16,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/{user_id}', 'UserController@show')->name('user.show');
     Route::put('/profile/{user_id}', 'UserController@update')->name('user.update');
 });
-
+Route::get('/scheduler/run', 'SchedulerController@run')->name('test.fail');
 // Route::get('{any}', 'AppController@index')->where('any', '.*');
