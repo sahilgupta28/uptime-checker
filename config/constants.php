@@ -9,7 +9,9 @@ return [
         'PAGINATION' => 5
     ],
     'ROUND' => 2,
-    'WEEK_MINUTES' => 7 * 24 * 60 * 60,
+    'WEEK_MINUTES' => 7 * 24 * 60,
+    'DAY_MINUTES' => 24 * 60,
+    'NIGHT_SCHEDULER_TIME' => '23:30',
     'FOUNDER' => [
         'NAME' => 'Sahil Gupta',
         'EMAIL' => 'er.sahilgupta1@gmail.com',
