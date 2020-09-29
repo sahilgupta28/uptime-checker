@@ -40,6 +40,7 @@ class WebsiteController extends Controller
     public function update(saveRequest $request, $id)
     {
         $inputs = $request->validated();
+        $this->authorize('updateWebsite', $this->website->find($id));
         $this->website->update($id, $inputs);
         return redirect()->back()->with('alert-success', __('New website added successfully'));
     }
