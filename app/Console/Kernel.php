@@ -29,7 +29,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('test:run --fail')
             ->everyMinute();
         $schedule->command('report:generate')
-            ->weeklyOn(7, '23:50');
+            ->weeklyOn(7, config('constants.NIGHT_SCHEDULER_TIME'));
+        $schedule->command('report:daily')
+            ->dailyAt(config('constants.NIGHT_SCHEDULER_TIME'));
     }
 
     /**
