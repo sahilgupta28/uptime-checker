@@ -17,4 +17,6 @@ interface WebsiteInterface
     public function allFail();
 
     public function notify($id);
+
+    public function getDailyReport($id);
 }
