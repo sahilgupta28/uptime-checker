@@ -21,7 +21,7 @@
             <div class="relative pt-3">
                 <label for="password" class="uppercase text-blue-500 text-xs font-bold absolute pl-3 pt-2">{{ __('Password') }}</label>
                 <div>
-                    <input id="password" type="password" class="pt-8 w-full rounded p-3 bg-blue-800 text-gray-100 outline-none focus:bg-blue-700" name="password" required autocomplete="current-password" placeholder="secrate">
+                    <input id="password" type="password" class="pt-8 w-full rounded p-3 bg-blue-800 text-gray-100 outline-none focus:bg-blue-700" name="password" required autocomplete="current-password" placeholder="secret">
                     @error('password')
                         <span class="text-red-500 text-sm" role="alert">{{ $message }}</span>
                     @enderror
