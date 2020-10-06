@@ -4,7 +4,7 @@
 <div class="mx-auto h-full justify-center items-center flex bg-gray-300">
     <div class="w-96 bg-blue-900 rounded-lg shadow-xl p-6">
         <h1 class="text-white text-3xl pt-8">{{ env('APP_NAME') }}</h1>
-        <h2 class="text-blue-300">Enter your credentails below.</h2>
+        <h2 class="text-blue-300">Enter your credentials below.</h2>
          <form method="POST" action="{{ route('login') }}" class="pt-8">
             @csrf
 
