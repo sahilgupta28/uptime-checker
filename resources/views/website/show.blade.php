@@ -3,7 +3,7 @@
 @section('content')
 <div class="h-full">
 <div class="w-full mt-4 bg-blue-900 px-6 py-3">
-    <h3 class="text-white text-3xl">Edit User Profile</h3>
+    <h3 class="text-white text-3xl">Edit Website Info</h3>
     <form class="w-full py-3" method="POST" action="{{ route('website.update', $website->id) }}">
         @csrf
         {{ method_field('PUT') }}
