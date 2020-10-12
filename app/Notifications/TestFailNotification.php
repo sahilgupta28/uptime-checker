@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use App\Helpers\Helper;
 
 class TestFailNotification extends Notification
 {
@@ -21,7 +22,9 @@ class TestFailNotification extends Notification
         if (!$notifiable->slack_hook) {
             return false;
         }
-
+        if (!Helper::CheckNotificationStatus($notifiable->notification_key)) {
+            return false;
+        }
         return ['slack'];
     }
 
