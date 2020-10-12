@@ -30,7 +30,7 @@ class WebsiteController extends Controller
         $inputs['test_at'] = date(config('constants.DATE_TIME_FORMAT'));
         $website = $this->website->create($inputs);
         if (!$website->status) {
-            $this->website->notify($id);
+            $this->website->notify($website->id);
         }
 
         Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
@@ -67,6 +67,7 @@ class WebsiteController extends Controller
 
     public function show(int $id)
     {
+        $this->authorize('updateWebsite', $this->website->find($id));
         $website = $this->website->find($id);
         return view('website.show', compact('website'));
     }
