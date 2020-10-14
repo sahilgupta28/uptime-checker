@@ -22,7 +22,7 @@ class TestFailNotification extends Notification
         if (!$notifiable->slack_hook) {
             return false;
         }
-        if (!Helper::CheckNotificationStatus($notifiable->notification_key)) {
+        if (!Helper::CheckNotificationStatus($notifiable->notification_key, $notifiable->notification_started_at)) {
             return false;
         }
         return ['slack'];
