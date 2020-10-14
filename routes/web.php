@@ -17,4 +17,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/profile/{user_id}', 'UserController@update')->name('user.update');
 });
 Route::get('/scheduler/run', 'SchedulerController@run')->name('test.fail');
+Route::get('/privacy-policy', function () {
+    return view('public.privacy_policy');
+});
+
 // Route::get('{any}', 'AppController@index')->where('any', '.*');
