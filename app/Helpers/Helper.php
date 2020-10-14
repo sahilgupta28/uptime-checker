@@ -28,8 +28,7 @@ class Helper
             strtotime('+' . $fibo_sum . ' minutes', $notification_start_at)
         );
 
-        if($next_notification == date(config('constants.DATE_TIME_FORMAT')))
-        {
+        if ($next_notification == date(config('constants.DATE_TIME_FORMAT'))) {
             return true;
         }
         return false;
