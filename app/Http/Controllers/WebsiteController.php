@@ -7,7 +7,8 @@ use App\Models\Website;
 use App\Components\UptimeChecker;
 use App\Repositories\Website\WebsiteInterface;
 use App\Repositories\TestLog\TestLogInterface;
-use App\Http\Requests\Website\saveRequest;
+use App\Http\Requests\Website\SaveRequest;
+use App\Http\Requests\Website\StatusRequest;
 use Artisan;
 
 class WebsiteController extends Controller
@@ -24,7 +25,7 @@ class WebsiteController extends Controller
         return view('dashboard.index', compact('websites'));
     }
 
-    public function save(saveRequest $request)
+    public function save(SaveRequest $request)
     {
         $request->validated();
         $inputs = $request->except('_token');
@@ -39,7 +40,7 @@ class WebsiteController extends Controller
         return redirect()->back()->with('alert-success', __('New website added successfully'));
     }
 
-    public function update(saveRequest $request, $id)
+    public function update(SaveRequest $request, $id)
     {
         $inputs = $request->validated();
         $this->authorize('updateWebsite', $this->website->find($id));
@@ -47,7 +48,16 @@ class WebsiteController extends Controller
         return redirect()->back()->with('alert-success', __('Website updated successfully'));
     }
 
-    public function destroy(saveRequest $request, $id)
+    public function status(StatusRequest $request, $id)
+    {
+        $inputs = $request->validated();
+        dd($inputs);
+        $this->authorize('updateWebsite', $this->website->find($id));
+        $this->website->update($id, $inputs);
+        return redirect()->back()->with('alert-success', __('Website updated successfully'));
+    }
+
+    public function destroy($id)
     {
         $inputs = $request->validated();
         $this->authorize('updateWebsite', $this->website->find($id));

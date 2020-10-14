@@ -11,6 +11,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/website', 'WebsiteController@save')->name('website.create');
     Route::get('/website/{id}', 'WebsiteController@show')->name('website.show');
     Route::put('/website/{id}', 'WebsiteController@update')->name('website.update');
+    Route::patch('/website/{id}', 'WebsiteController@status')->name('website.status');
     Route::delete('/website/{id}', 'WebsiteController@destroy')->name('website.delete');
 
     Route::post('/website-test/{id}', 'WebsiteController@test')->name('website.test');

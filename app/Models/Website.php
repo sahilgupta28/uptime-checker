@@ -22,7 +22,8 @@ class Website extends Model
         'description',
         'status',
         'test_at',
-        'slack_hook'
+        'slack_hook',
+        'is_active'
     ];
     protected $hidden = ['updated_at', 'created_at'];
     protected $dates = [
@@ -37,7 +38,8 @@ class Website extends Model
         'domain' => ['max:100', 'required', 'string'],
         'description' => 'required',
         'status' => 'required',
-        'test_at' => 'required  '
+        'test_at' => 'required',
+        'is_active' => 'boolean'
     ];
 
     protected static $messages = [

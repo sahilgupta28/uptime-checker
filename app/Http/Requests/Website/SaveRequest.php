@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Route;
 
-class saveRequest extends FormRequest
+class SaveRequest extends FormRequest
 {
     public function __construct(Request $request)
     {
@@ -21,7 +21,7 @@ class saveRequest extends FormRequest
             'user_id' => 'required|numeric|exists:users,id',
             'domain' => 'max:100|required|string',
             'description' => 'required',
-            'slack_hook' => 'nullable|string|regex:' . config('constants.SLACK_REG')
+            'slack_hook' => 'nullable|string|regex:' . config('constants.SLACK_REG'),
         ];
     }
 
