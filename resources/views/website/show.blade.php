@@ -64,7 +64,11 @@
                 value="{{ old('slack_hook', $website->slack_hook) }}" 
                 autocomplete="slack_hook" 
                 placeholder=""
-                readonly
+                @if($website->slack_hook) 
+                    readonly 
+                @else
+                    name="slack_hook"
+                @endif
             >
             @error('slack_hook')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
             </div>
