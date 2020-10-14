@@ -17,4 +17,9 @@ class TestLogRepository implements TestLogInterface
     {
         return $this->model->create($attributes);
     }
+
+    public function delete(int $website_id)
+    {
+        return $this->model->where('website_id', $website_id)->delete();
+    }
 }
