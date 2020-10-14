@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Website;
 use App\Components\UptimeChecker;
 use App\Repositories\Website\WebsiteInterface;
+use App\Repositories\TestLog\TestLogInterface;
 use App\Http\Requests\Website\saveRequest;
 use Artisan;
 
 class WebsiteController extends Controller
 {
-    public function __construct(WebsiteInterface $website)
+    public function __construct(WebsiteInterface $website, TestLogInterface $log)
     {
         $this->website = $website;
+        $this->log = $log;
     }
 
     public function index()
@@ -42,7 +44,16 @@ class WebsiteController extends Controller
         $inputs = $request->validated();
         $this->authorize('updateWebsite', $this->website->find($id));
         $this->website->update($id, $inputs);
-        return redirect()->back()->with('alert-success', __('New website added successfully'));
+        return redirect()->back()->with('alert-success', __('Website updated successfully'));
+    }
+
+    public function destroy(saveRequest $request, $id)
+    {
+        $inputs = $request->validated();
+        $this->authorize('updateWebsite', $this->website->find($id));
+        $this->log->delete($id);
+        $this->website->delete($id);
+        return redirect()->back()->with('alert-success', __('Website deleted successfully'));
     }
 
     public function test($id)

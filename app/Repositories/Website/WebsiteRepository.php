@@ -71,6 +71,11 @@ class WebsiteRepository implements WebsiteInterface
         return $this->model->whereId($id)->first()->notify(new DailyStatus($this->getDailyReport($id)));
     }
 
+    public function delete($id)
+    {
+        return $this->model->whereId($id)->delete();
+    }
+
     public function getDailyReport($id)
     {
         $start_time = date('Y-m-d 00:00:00');
