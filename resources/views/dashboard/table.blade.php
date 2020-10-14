@@ -48,7 +48,7 @@
                 </td>
             </tr>
             @endforeach
-            {{ $websites->links() }}
         </tbody>
     </table>
+    {{ $websites->links('vendor/pagination/default') }}
 </div>
