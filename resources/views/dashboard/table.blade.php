@@ -24,11 +24,12 @@
                     @endforeach
                 </td>
                 <td class="border-gray-500 bg-gray-300 border px-4 py-2">{{\Carbon\Carbon::parse($website->test_at)->diffForHumans()}}</td>
-                <td class="border-gray-500 bg-gray-300 border px-4 py-2">
-                    <form action="{{route('website.test', $website->id)}}" method="POST">
+                <td class="border-gray-500 bg-gray-300 border px-1 py-2 w-full">
+                    <form action="{{route('website.test', $website->id)}}" method="POST" class="md:w-1/2 mb-6">
                     @csrf
-                        <button type="submit" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-4 rounded">Test</button>
+                        <button type="submit" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-1 rounded text-sm ">Test</button>
                     </form>
+                    <a type="button" class="shadow bg-purple-500 md:w-1/2 mb-4 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-1 rounded text-sm " href="{{ route('website.show',$website->id) }}">Edit</a>
                 </td>
             </tr>
             @endforeach

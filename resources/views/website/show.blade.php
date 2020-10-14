@@ -8,7 +8,7 @@
         @csrf
         {{ method_field('PUT') }}
         <div class="flex flex-wrap -mx-3">
-            <div class="w-full md:w-3/4 px-3">
+            <div class="w-full md:w-3/4 px-3 py-4">
             <label 
                 for="title" 
                 class="block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2" 
@@ -29,7 +29,7 @@
             @error('title')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
             </div>
 
-            <div class="w-full md:w-3/4  px-3">
+            <div class="w-full md:w-3/4  px-3 py-4">
             <label 
                 for="domain" 
                 class="block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2" 
@@ -49,27 +49,27 @@
             @error('domain')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
             </div>
 
-            <div class="w-full md:w-3/4  px-3">
+            <div class="w-full md:w-3/4  px-3 py-4">
             <label 
                 for="slack_hook" 
                 class="block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2" 
                 >
-                Slack Hook
+                slack webhook URL (?)
             </label>
             <input 
                 class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
                 id="slack_hook"
-                name="slack_hook"
                 type="text" 
                 class="form-control" 
                 value="{{ old('slack_hook', $website->slack_hook) }}" 
                 autocomplete="slack_hook" 
                 placeholder=""
+                readonly
             >
             @error('slack_hook')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
             </div>
 
-            <div class="w-full md:w-3/4  px-3">
+            <div class="w-full md:w-3/4  px-3 py-4">
             <label 
                 for="description" 
                 class="block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2"     
