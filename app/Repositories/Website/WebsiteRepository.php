@@ -38,17 +38,11 @@ class WebsiteRepository implements WebsiteInterface
         ->send($this->model)
         ->through([
             \App\QueryFilters\Sort::class,
-            \App\QueryFilters\Website\LoginUser::class
+            \App\QueryFilters\Website\LoginUser::class,
+            \App\QueryFilters\Website\TestLogs::class
         ])
         ->thenReturn()
-        ->get()
-        ->map(function ($website) {
-            $website->setRelation(
-                'testLogs',
-                $website->testLogs->take(10)
-            );
-            return $website;
-        });
+        ->paginate(config('constants.DEFAULT.LIMIT'));
     }
 
     public function all()
