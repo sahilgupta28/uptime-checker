@@ -50,5 +50,5 @@
             @endforeach
         </tbody>
     </table>
-    {{ $websites->links('vendor/pagination/default') }}
+    {{ $websites->links('pagination/default') }}
 </div>
