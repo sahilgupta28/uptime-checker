@@ -26,9 +26,10 @@
     @include('layouts.header')
         <main class="h-screen">
             @yield('content')
+            @include('layouts.footer')
         </main>
     </div>
-@include('layouts.footer')
+
     <script src="https://kit.fontawesome.com/d691d5d56a.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
