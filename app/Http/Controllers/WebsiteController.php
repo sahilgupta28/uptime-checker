@@ -69,6 +69,7 @@ class WebsiteController extends Controller
     {
         $this->authorize('updateWebsite', $this->website->find($id));
         $website = $this->website->find($id);
+        $website->slack_hook = config('constants.SLACK_SLUG');
         return view('website.show', compact('website'));
     }
 }
