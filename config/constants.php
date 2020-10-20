@@ -11,6 +11,7 @@ return [
     'ROUND' => 2,
     'WEEK_MINUTES' => 7 * 24 * 60,
     'DAY_MINUTES' => 24 * 60,
+    'NEXT_FIBONACCI_NUM' => (1 + sqrt(5)) / 2,
     'NIGHT_SCHEDULER_TIME' => '23:30',
     'FOUNDER' => [
         'NAME' => 'Sahil Gupta',
