@@ -54,7 +54,7 @@
                 for="slack_hook" 
                 class="block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2" 
                 >
-                slack webhook URL (?)
+                slack webhook URL <span data-toggle="tooltip" data-placement="top" title="{{ __('messages.slack_hook_info') }}" description="sss">(?)</span>
             </label>
             <input 
                 class="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
