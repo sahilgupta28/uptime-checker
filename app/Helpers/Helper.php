@@ -25,10 +25,9 @@ class Helper
         $fibo_sum = self::getFibonacciSum($notification_key + 1);
         $next_notification = date(
             config('constants.DATE_TIME_FORMAT'),
-            strtotime('+' . $fibo_sum . ' minutes', $notification_start_at)
+            strtotime('+' . $fibo_sum . ' minutes', strtotime($notification_start_at))
         );
-
-        if ($next_notification == date(config('constants.DATE_TIME_FORMAT'))) {
+        if ($next_notification <= date(config('constants.DATE_TIME_FORMAT'))) {
             return true;
         }
         return false;
@@ -47,5 +46,13 @@ class Helper
             $num2 = $num3;
         }
         return $sum;
+    }
+
+    public static function nextFibonacciNumber($number)
+    {
+        if ($number == 0) {
+            return (int) 1;
+        }
+        return (int) round($number * config('constants.NEXT_FIBONACCI_NUM'));
     }
 }

@@ -19,4 +19,6 @@ interface WebsiteInterface
     public function notify($id);
 
     public function getDailyReport($id);
+
+    public function updateNotificationKey($id, $key, $started_at);
 }

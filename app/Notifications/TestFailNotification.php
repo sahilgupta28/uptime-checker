@@ -7,15 +7,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use App\Repositories\Website\WebsiteRepository;
+use App\Models\Website;
 use App\Helpers\Helper;
 
 class TestFailNotification extends Notification
 {
     use Queueable;
-
-    public function __construct()
-    {
-    }
 
     public function via($notifiable)
     {
@@ -25,6 +23,8 @@ class TestFailNotification extends Notification
         if (!Helper::CheckNotificationStatus($notifiable->notification_key, $notifiable->notification_started_at)) {
             return false;
         }
+        $website = new WebsiteRepository(new Website());
+        $website->updateNotificationKey($notifiable->id, $notifiable->notification_key, $notifiable->notification_started_at);
         return ['slack'];
     }
 

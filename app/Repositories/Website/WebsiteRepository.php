@@ -6,6 +6,7 @@ use App\Models\Website;
 use Illuminate\Pipeline\Pipeline;
 use App\Notifications\TestFailNotification;
 use App\Notifications\DailyStatus;
+use App\Helpers\Helper;
 use DB;
 
 class WebsiteRepository implements WebsiteInterface
@@ -93,5 +94,33 @@ class WebsiteRepository implements WebsiteInterface
             ->whereNotNull('w.slack_hook')
             ->where('w.id', $id)
             ->first();
+    }
+
+    public function updateNotificationKey($id, $key, $started_at)
+    {
+        $data = [];
+        if (!$started_at || !$key) {
+            $data = [
+                'notification_started_at' => date(config('constants.DATE_TIME_FORMAT')),
+                'notification_key' => 1
+            ];
+            return $this->update($id, $data);
+        }
+
+        $max_date_time = date(
+            config('constants.DATE_TIME_FORMAT'),
+            strtotime('+' . config('constants.DAY_MINUTES') . ' minutes', strtotime($started_at))
+        );
+        if ($max_date_time <= date(config('constants.DATE_TIME_FORMAT'))) {
+            $data = [
+                'notification_started_at' => null,
+                'notification_key' => Helper::nextFibonacciNumber($key)
+            ];
+            return $this->update($id, $data);
+        }
+        $data = [
+            'notification_key' => Helper::nextFibonacciNumber($key)
+        ];
+        return $this->update($id, $data);
     }
 }
