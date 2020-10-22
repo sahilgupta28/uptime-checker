@@ -21,6 +21,9 @@ class RunTest extends Command
         $bar->start();
 
         foreach ($websites as $website) {
+            if (!$website->is_active) {
+                continue;
+            }
             $website->test_at = date(config('constants.DATE_TIME_FORMAT'));
             $website->status = (new UptimeChecker())->run($website->domain);
             $website_repo->update($website->id, $website->toArray());

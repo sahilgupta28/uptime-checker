@@ -25,6 +25,9 @@ class DailyStatus extends Command
         $bar = $this->output->createProgressBar(count($websites));
         $bar->start();
         foreach ($websites as $website) {
+            if (!$website->is_active) {
+                continue;
+            }
             $this->website->dailyReport($website->id);
             $bar->advance();
         }

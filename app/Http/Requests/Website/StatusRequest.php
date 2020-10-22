@@ -12,7 +12,6 @@ use Route;
 
 class StatusRequest extends FormRequest
 {
-
     public function authorize()
     {
         return true;
@@ -21,11 +20,9 @@ class StatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'required|boolean'
+            'is_active' => 'required|boolean'
         ];
     }
-
-
 
     protected function failedValidation(Validator $validator)
     {

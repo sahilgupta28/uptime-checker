@@ -14,4 +14,9 @@ class WebsitePolicy
     {
         return $user->id === $website->user_id;
     }
+
+    public function active(User $user, Website $website)
+    {
+        return $website->is_active;
+    }
 }

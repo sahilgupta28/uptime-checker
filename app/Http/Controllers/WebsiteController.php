@@ -51,7 +51,6 @@ class WebsiteController extends Controller
     public function status(StatusRequest $request, $id)
     {
         $inputs = $request->validated();
-        dd($inputs);
         $this->authorize('updateWebsite', $this->website->find($id));
         $this->website->update($id, $inputs);
         return redirect()->back()->with('alert-success', __('Website updated successfully'));
@@ -69,6 +68,7 @@ class WebsiteController extends Controller
     public function test($id)
     {
         $website = $this->website->find($id);
+        $this->authorize('active', $website);
         $website->test_at = date(config('constants.DATE_TIME_FORMAT'));
         $website->status = (new UptimeChecker())->run($website->domain);
         $this->website->update($website->id, $website->toArray());
