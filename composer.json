@@ -68,7 +68,6 @@
         ],
         "post-install-cmd": [
             "chmod 777 -R storage; chmod 777 -R bootstrap",
-            "php artisan migrate --force",
             "php artisan cache:clear"
         ]
     }

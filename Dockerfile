@@ -10,4 +10,6 @@ COPY . .
 
 RUN composer install -n --prefer-dist
 
+RUN php artisan migrate --force
+
 RUN chown -R www-data:www-data storage bootstrap
