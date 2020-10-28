@@ -70,6 +70,6 @@
             "chmod 777 -R storage; chmod 777 -R bootstrap",
             "php artisan migrate  --no-interaction --force",
             "php artisan cache:clear"
-        ],
+        ]
     }
 }
