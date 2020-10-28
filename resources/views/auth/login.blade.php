@@ -46,7 +46,7 @@
                 <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
             </div>
         </form>
-        <a href="{{ route('github.login') }}" style="display: none">
+        <a href="{{ route('github.login') }}">
             <i class="fa fa-github fa-3x"></i>
         </a>
     </div>

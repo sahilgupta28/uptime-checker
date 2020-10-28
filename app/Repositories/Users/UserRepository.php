@@ -108,4 +108,9 @@ class UserRepository implements UserInterface
         }
         return $query;
     }
+
+    public function findByProviderID($provider_id)
+    {
+        return $this->model->where('provider_id', $provider_id)->first();
+    }
 }
