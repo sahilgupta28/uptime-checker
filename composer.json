@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/slack-notification-channel": "^2.0",
+        "laravel/socialite": "^5.0",
         "laravel/tinker": "^1.0",
         "mll-lab/laravel-graphql-playground": "^2.1",
         "nuwave/lighthouse": "^4.14"

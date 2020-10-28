@@ -6,6 +6,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('login/github', 'SocialLoginController@redirectToProvider')->name('github.login');
+Route::get('login/github/callback', 'SocialLoginController@handleProviderCallback');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'WebsiteController@index')->name('home');
     Route::post('/website', 'WebsiteController@save')->name('website.create');
