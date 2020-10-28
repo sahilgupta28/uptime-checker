@@ -24,7 +24,8 @@ class Update extends FormRequest
         return [
             'name' => 'required|string',
             'bio' => 'sometimes',
-            'id' => 'required|exists:users,id'
+            'id' => 'required|exists:users,id',
+            'email' => 'sometimes|unique:users,email'
         ];
     }
 

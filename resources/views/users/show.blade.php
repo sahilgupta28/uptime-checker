@@ -44,7 +44,11 @@
                 value="{{ old('email', $user->email) }}" 
                 autocomplete="email" 
                 placeholder="Eg: my@email.com"
-                readonly
+                @if($user->email) 
+                readonly 
+                @else
+                name="email"
+                @endif
             >
             @error('email')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
             </div>
