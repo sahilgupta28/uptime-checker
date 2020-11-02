@@ -58,7 +58,6 @@ class WebsiteController extends Controller
 
     public function destroy($id)
     {
-        $inputs = $request->validated();
         $this->authorize('updateWebsite', $this->website->find($id));
         $this->log->delete($id);
         $this->website->delete($id);
