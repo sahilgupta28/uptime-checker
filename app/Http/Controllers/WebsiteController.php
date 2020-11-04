@@ -30,7 +30,7 @@ class WebsiteController extends Controller
         $request->validated();
         $inputs = $request->except('_token');
         $inputs['status'] = (new UptimeChecker())->run($inputs['domain']);
-        $inputs['test_at'] = date(config('constants.DATE_TIME_FORMAT'));
+        $inputs['test_at'] = $inputs['status_updated_at'] = date(config('constants.DATE_TIME_FORMAT'));
         $website = $this->website->create($inputs);
         if (!$website->status) {
             $this->website->notify($website->id);
@@ -68,9 +68,7 @@ class WebsiteController extends Controller
     {
         $website = $this->website->find($id);
         $this->authorize('active', $website);
-        $website->test_at = date(config('constants.DATE_TIME_FORMAT'));
-        $website->status = (new UptimeChecker())->run($website->domain);
-        $this->website->update($website->id, $website->toArray());
+        $this->website->updateStatus($website->id, (new UptimeChecker())->run($website->domain));
         Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
         if (!$website->status) {
             $this->website->notify($id);

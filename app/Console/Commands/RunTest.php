@@ -24,9 +24,7 @@ class RunTest extends Command
             if (!$website->is_active) {
                 continue;
             }
-            $website->test_at = date(config('constants.DATE_TIME_FORMAT'));
-            $website->status = (new UptimeChecker())->run($website->domain);
-            $website_repo->update($website->id, $website->toArray());
+            $website_repo->updateStatus($website->id, (new UptimeChecker())->run($website->domain));
             Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
             if (!$website->status) {
                 $website_repo->notify($website->id);
