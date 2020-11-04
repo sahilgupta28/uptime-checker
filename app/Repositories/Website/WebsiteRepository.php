@@ -28,6 +28,17 @@ class WebsiteRepository implements WebsiteInterface
         return $this->model->whereId($id)->update($attributes);
     }
 
+    public function updateStatus(int $id, bool $status)
+    {
+        $website = $this->find($id);
+        if ($website->status != $status) {
+            $website->status_updated_at = date(config('constants.DATE_TIME_FORMAT'));
+        }
+        $website->test_at = date(config('constants.DATE_TIME_FORMAT'));
+        $website->status = $status;
+        return $website->save();
+    }
+
     public function find(int $id)
     {
         return $this->model->findOrFail($id);

@@ -8,6 +8,8 @@ interface WebsiteInterface
 
     public function update(int $id, array $attributes);
 
+    public function updateStatus(int $id, bool $status);
+
     public function find(int $id);
 
     public function list();
