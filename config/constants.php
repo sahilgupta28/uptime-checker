@@ -2,6 +2,7 @@
 
 return [
     'DATE_TIME_FORMAT' => 'Y-m-d H:i:s',
+    'DATE_TIME_FORMAT_SLACK' => 'h:i A, M d, Y',
     'DEFAULT' => [
         'LIMIT' => 10,
         'OFFSET' => 0,
