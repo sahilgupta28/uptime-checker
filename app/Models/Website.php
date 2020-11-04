@@ -23,13 +23,15 @@ class Website extends Model
         'status',
         'test_at',
         'slack_hook',
-        'is_active'
+        'is_active',
+        'status_updated_at'
     ];
     protected $hidden = ['updated_at', 'created_at'];
     protected $dates = [
         'created_at',
         'updated_at',
-        'test_at'
+        'test_at',
+        'status_updated_at'
     ];
 
     protected static $rules = [
