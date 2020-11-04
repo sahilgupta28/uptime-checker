@@ -33,6 +33,10 @@ class WebsiteRepository implements WebsiteInterface
         $website = $this->find($id);
         if ($website->status != $status) {
             $website->status_updated_at = date(config('constants.DATE_TIME_FORMAT'));
+            if ($status) {
+                $website->notification_started_at = null;
+                $website->notification_key = 0;
+            }
         }
         $website->test_at = date(config('constants.DATE_TIME_FORMAT'));
         $website->status = $status;
