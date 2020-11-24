@@ -19,8 +19,8 @@
                 <td class="border-gray-500 bg-gray-300 border px-4 py-2">
                     <a href="{{ route('website.show',$website->id) }}">{{$website->title}}</a></td>
                 <td class="border-gray-500 bg-gray-300 border px-4 py-2">{{$website->domain}}</td>
-                <td class="border-gray-500 bg-gray-300 border px-4 py-2">
-                    @foreach($website->testLogs->take(config('constants.DEFAULT.LIMIT'))->reverse() as $test_log)
+                <td class="border-gray-500 bg-gray-300 border px-4 py-2"> 
+                    @foreach($website->testLogsLimit->reverse() as $test_log)
                         <i class="fa @if($test_log->status) fa-check-circle text-green-600 @else fa-times-circle text-gray-500 @endif" data-toggle="tooltip" data-placement="top" title="{{\Carbon\Carbon::parse($test_log->test_at)->diffForHumans()}}"></i>
                     @endforeach
                 </td>

@@ -60,4 +60,11 @@ class Website extends Model
         return $this->hasMany(\App\Models\TestLog::class, 'website_id', 'id')
             ->orderBy('id', config('constants.DEFAULT.SORT'));
     }
+
+    public function testLogsLimit()
+    {
+        return $this->hasMany(\App\Models\TestLog::class, 'website_id', 'id')
+            ->orderBy('id', config('constants.DEFAULT.SORT'))
+            ->limit(config('constants.DEFAULT.LIMIT'));
+    }
 }
