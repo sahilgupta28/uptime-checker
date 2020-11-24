@@ -24,7 +24,9 @@ class Website extends Model
         'test_at',
         'slack_hook',
         'is_active',
-        'status_updated_at'
+        'status_updated_at',
+        'notification_started_at',
+        'notification_key'
     ];
     protected $hidden = ['updated_at', 'created_at'];
     protected $dates = [

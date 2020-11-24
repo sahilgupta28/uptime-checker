@@ -68,9 +68,10 @@ class WebsiteController extends Controller
     {
         $website = $this->website->find($id);
         $this->authorize('active', $website);
-        $this->website->updateStatus($website->id, (new UptimeChecker())->run($website->domain));
+        $new_status = (new UptimeChecker())->run($website->domain);
+        $this->website->updateStatus($website->id, $new_status);
         Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
-        if (!$website->status) {
+        if (!$new_status) {
             $this->website->notify($id);
         }
 

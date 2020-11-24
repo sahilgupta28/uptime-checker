@@ -5,6 +5,7 @@ namespace App\Repositories\Website;
 use App\Models\Website;
 use Illuminate\Pipeline\Pipeline;
 use App\Notifications\TestFailNotification;
+use App\Notifications\TestSuccessNotification;
 use App\Notifications\DailyStatus;
 use App\Helpers\Helper;
 use DB;
@@ -31,16 +32,19 @@ class WebsiteRepository implements WebsiteInterface
     public function updateStatus(int $id, bool $status)
     {
         $website = $this->find($id);
+
         if ($website->status != $status) {
             $website->status_updated_at = date(config('constants.DATE_TIME_FORMAT'));
             if ($status) {
                 $website->notification_started_at = null;
                 $website->notification_key = 0;
+                $this->notifyUp($id);
             }
         }
+
         $website->test_at = date(config('constants.DATE_TIME_FORMAT'));
         $website->status = $status;
-        return $website->save();
+        return $this->update($id, $website->toArray());
     }
 
     public function find(int $id)
@@ -74,6 +78,11 @@ class WebsiteRepository implements WebsiteInterface
     public function notify($id)
     {
         return $this->model->whereId($id)->first()->notify(new TestFailNotification());
+    }
+
+    public function notifyUp($id)
+    {
+        return $this->model->whereId($id)->first()->notify(new TestSuccessNotification());
     }
 
     public function dailyReport($id)
