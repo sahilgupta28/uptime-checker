@@ -25,7 +25,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('test:run')
+            ->everyTenMinutes();
+        $schedule->command('test:run --fail')
             ->everyMinute();
+
         $schedule->command('report:generate')
             ->weeklyOn(7, config('constants.NIGHT_SCHEDULER_TIME'));
         $schedule->command('report:daily')
