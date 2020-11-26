@@ -60,3 +60,9 @@ Yes, We have integrated Github login/register. So, You can login login/register 
 ### What is the frequency of testing ping?
 
 We ping the URL after every 10 min and when it found down then we start pinging every minute until next up.
+
+### Where user will get notification of down status?
+
+Use will get notification of down on Slack. You needs to add your slack hook with the web URL.
+
+
