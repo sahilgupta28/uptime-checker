@@ -63,15 +63,16 @@ We ping the URL after every 10 min and when it found down then we start pinging 
 
 ### Where user will get notification of down status?
 
-Use will get notification of down on Slack. You needs to add your slack hook with the web URL.
+User will get notification of down on Slack. You need to add your slack hook with the web URL.
 
 ### How to add slack hook?
 
 Click on edit domain button, there is an option for add slack hook.
 
-### What is slack hook?
+### What is the slack hook?
 
 Incoming Webhooks are a simple way to post messages from apps into Slack. Creating an Incoming Webhook gives you a unique URL to which you send a JSON payload with the message text and some options.
 
+### How I can get a slack hook?
 
-
+Slack provides a service to create webhook. [Click here](https://api.slack.com/messaging/webhooks) to know more about it.
