@@ -49,12 +49,14 @@ You need to create an account with uptime checker. Then you can add your web URL
 
 Hit URL:- https://uptime.utool.dev/register
 Then there are options for register with Uptime.
-- Add some user details (Like name, email, password) and create an account.
-- You can directly register with Github.  
+
+-   Add some user details (Like name, email, password) and create an account.
+-   You can directly register with Github.
 
 ### Can we use any social login/register?
+
 Yes, We have integrated Github login/register. So, You can login login/register via Github.
 
+### What is the frequency of testing ping?
 
-
-
+We ping the URL after every 10 min and when it found down then we start pinging every minute until next up.
