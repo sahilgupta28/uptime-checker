@@ -44,3 +44,10 @@ Uptime checker is a powerful tool which checks the uptime of a web project and n
 ### How it works?
 
 You need to create an account with uptime checker. Then you can add your web URL to check their uptime. This tool will ping the URL to check the uptime of the URL.
+
+### How to register on uptime?
+
+Hit URL:- https://uptime.utool.dev/register
+Then there are options for register with Uptime.
+- Add some user details (Like name, email, password) and create an account.
+- You can directly register with Github.  
