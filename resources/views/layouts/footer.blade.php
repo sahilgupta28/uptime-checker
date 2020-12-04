@@ -8,7 +8,8 @@
     <div class="w-full flex flex-wrap -mx-3 text-left">
     <div class="font-semibold text-sm tracking-tight text-blue-300 w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <a class="px-1" href="{{ route('home') }}">Home</a> | 
-        <a class="px-1" href="{{ route('privacy.policy') }}" target="_blank">Privacy Policy</a>
+        <a class="px-1" href="{{ route('privacy.policy') }}" target="_blank">Privacy Policy</a> |
+        <a class="px-1" href="{{ route('faq') }}" target="_blank">FAQ</a>
     </div>
     <div class="font-semibold text-sm tracking-tight text-blue-300 w-full md:w-1/2 px-3 mb-6 md:mb-0 text-right">
         <a class="px-1" href="{{ config('constants.FOUNDER.TWITTER') }}" target="_blank"><i class="fa fa-twitter"></i></a>
