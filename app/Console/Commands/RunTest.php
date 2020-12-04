@@ -26,9 +26,9 @@ class RunTest extends Command
             }
             $new_status = (new UptimeChecker())->run($website->domain);
             $website_repo->updateStatus($website->id, $new_status);
-            Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
             if (!$new_status) {
                 $website_repo->notify($website->id);
+                Artisan::queue('test_log:create', ['data' => $website->only('id', 'status', 'test_at')]);
             }
 
             $bar->advance();
