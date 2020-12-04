@@ -29,5 +29,3 @@ Route::get('/privacy-policy', function () {
 Route::get('/faq', function () {
     return view('public.privacy_policy');
 })->name('faq');
-
-// Route::get('{any}', 'AppController@index')->where('any', '.*');
