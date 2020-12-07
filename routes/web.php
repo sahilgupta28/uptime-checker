@@ -27,5 +27,5 @@ Route::get('/privacy-policy', function () {
 })->name('privacy.policy');
 
 Route::get('/faq', function () {
-    return view('public.privacy_policy');
+    return view('public.faq');
 })->name('faq');
