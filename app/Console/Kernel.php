@@ -18,6 +18,8 @@ class Kernel extends ConsoleKernel
             ->weeklyOn(7, config('constants.NIGHT_SCHEDULER_TIME'));
         $schedule->command('report:daily')
             ->dailyAt(config('constants.NIGHT_SCHEDULER_TIME'));
+        $schedule->command('delete:logs')
+            ->dailyAt(config('constants.NIGHT_SCHEDULER_TIME'));
     }
 
     protected function commands()
