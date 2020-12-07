@@ -25,5 +25,6 @@ return [
         'BLOG' => 'https://sahilgupta1.blogspot.com/'
     ],
     'SLACK_REG' => '~\b(https?://)hooks\.slack\.com/services/(\S+\b)/(\S+\b)/(\S+\b)~',
-    'SLACK_SLUG' => 'https://hooks.slack.com/services/*****/*****/*****'
+    'SLACK_SLUG' => 'https://hooks.slack.com/services/*****/*****/*****',
+    'DELETE_LOG_DAYS' => 15,
 ];
