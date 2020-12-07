@@ -20,8 +20,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="font-family: 'Play', sans-serif;">
     <div id="app">
     @include('layouts.header')
         <main class="h-screen">
