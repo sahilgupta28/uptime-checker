@@ -8,7 +8,7 @@
         </div>
         <div class="pb-4">
             <div> How it works? </div>
-            <div> You need to create an account with uptime checker. Then you can add your web URL to check their uptime. This tool will ping the URL to check the uptime of the URL. </div>
+            <div class="text-white"> You need to create an account with uptime checker. Then you can add your web URL to check their uptime. This tool will ping the URL to check the uptime of the URL. </div>
         </div>
         <div class="pb-4">
             <div> How to register on uptime? </div>
