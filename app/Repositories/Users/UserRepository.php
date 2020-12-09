@@ -56,16 +56,6 @@ class UserRepository implements UserInterface
                 'w.domain',
                 'w.id as website_id',
                 'u.id as user_id',
-                DB::raw('(SELECT count(test_logs.id) FROM test_logs
-                    WHERE test_logs.status = false
-                    AND test_logs.website_id = W.id
-                    AND test_logs.test_at BETWEEN' . "'" . $start_time . "' AND '" . $end_time . "')
-                    as website_downtime"),
-                DB::raw('(SELECT count(test_logs.id) FROM test_logs
-                    WHERE test_logs.status = false
-                    AND test_logs.test_at BETWEEN' . "'" . $start_time . "' AND '" . $end_time . "')
-                    as user_downtime"),
-                DB::raw($week_days)
             )
             ->leftJoin('websites as w', 'w.user_id', '=', 'u.id')
             ->where('u.id', $id)

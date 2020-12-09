@@ -25,6 +25,11 @@ class WeeklyReport extends Command
         $bar = $this->output->createProgressBar(count($users));
         $bar->start();
         foreach ($users as $user) {
+            $weekly_report = $this->user->getWeeklyReport($user->id);
+            if (count($weekly_report) > 0) {
+                Mail::to($user->email)->send(new WeeklyReportMail($weekly_report));
+            }
+            $bar->advance();
         }
         $bar->finish();
     }
