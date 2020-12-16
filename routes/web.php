@@ -22,7 +22,8 @@ Route::group(['middleware' => ['auth', 'user']], function () {
     Route::put('/profile/{user_id}', 'UserController@update')->name('user.update');
 });
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('dashboard', 'AdminController@dashboard');
 });
 Route::get('/scheduler/run', 'SchedulerController@run')->name('test.fail');
 Route::get('/privacy-policy', function () {
