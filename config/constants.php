@@ -27,4 +27,8 @@ return [
     'SLACK_REG' => '~\b(https?://)hooks\.slack\.com/services/(\S+\b)/(\S+\b)/(\S+\b)~',
     'SLACK_SLUG' => 'https://hooks.slack.com/services/*****/*****/*****',
     'DELETE_LOG_DAYS' => 15,
+    'ROLE' => [
+        'ADMIN' => 1,
+        'USER' => 2
+    ]
 ];
