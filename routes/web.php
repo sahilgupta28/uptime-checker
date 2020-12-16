@@ -9,7 +9,7 @@ Auth::routes();
 Route::get('login/github', 'SocialLoginController@redirectToProvider')->name('github.login');
 Route::get('login/github/callback', 'SocialLoginController@handleProviderCallback');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'user']], function () {
     Route::get('/home', 'WebsiteController@index')->name('home');
     Route::post('/website', 'WebsiteController@save')->name('website.create');
     Route::get('/website/{id}', 'WebsiteController@show')->name('website.show');
@@ -20,6 +20,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/website-test/{id}', 'WebsiteController@test')->name('website.test');
     Route::get('/profile/{user_id}', 'UserController@show')->name('user.show');
     Route::put('/profile/{user_id}', 'UserController@update')->name('user.update');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
 });
 Route::get('/scheduler/run', 'SchedulerController@run')->name('test.fail');
 Route::get('/privacy-policy', function () {
