@@ -13,4 +13,6 @@ interface UserInterface
     public function getWeeklyReport(int $id);
 
     public function all();
+
+    public function list() : ?object;
 }

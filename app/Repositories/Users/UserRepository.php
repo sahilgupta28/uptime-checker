@@ -113,4 +113,9 @@ class UserRepository implements UserInterface
     {
         return $this->model->where('provider_id', $provider_id)->first();
     }
+
+    public function list() : ?object
+    {
+        return $this->model->paginate(config('constants.DEFAULT.LIMIT'));
+    }
 }
