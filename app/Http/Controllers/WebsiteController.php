@@ -19,7 +19,7 @@ class WebsiteController extends Controller
         $this->log = $log;
     }
 
-    public function index()
+    public function list()
     {
         $websites = $this->website->list();
         return view('dashboard.index', compact('websites'));
@@ -43,7 +43,7 @@ class WebsiteController extends Controller
     public function update(SaveRequest $request, $id)
     {
         $inputs = $request->validated();
-        $this->authorize('updateWebsite', $this->website->find($id));
+        $this->authorize('owner', $this->website->find($id));
         $this->website->update($id, $inputs);
         return redirect()->back()->with('alert-success', __('Website updated successfully'));
     }
@@ -51,14 +51,14 @@ class WebsiteController extends Controller
     public function status(StatusRequest $request, $id)
     {
         $inputs = $request->validated();
-        $this->authorize('updateWebsite', $this->website->find($id));
+        $this->authorize('ownerOrAdmin', $this->website->find($id));
         $this->website->update($id, $inputs);
         return redirect()->back()->with('alert-success', __('Website updated successfully'));
     }
 
     public function destroy($id)
     {
-        $this->authorize('updateWebsite', $this->website->find($id));
+        $this->authorize('owner', $this->website->find($id));
         $this->log->delete($id);
         $this->website->delete($id);
         return redirect()->back()->with('alert-success', __('Website deleted successfully'));
@@ -78,15 +78,9 @@ class WebsiteController extends Controller
         return redirect()->back()->with('alert-success', __('Test run successfully.'));
     }
 
-    public function list()
-    {
-        $websites = $this->website->all();
-        return $this->showSuccessRequest($websites, __('websites list.'), 200);
-    }
-
     public function show(int $id)
     {
-        $this->authorize('updateWebsite', $this->website->find($id));
+        $this->authorize('owner', $this->website->find($id));
         $website = $this->website->find($id);
         $website->slack_hook = $website->slack_hook ? config('constants.SLACK_SLUG') : '';
         return view('website.show', compact('website'));

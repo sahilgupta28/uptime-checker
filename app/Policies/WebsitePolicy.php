@@ -10,7 +10,12 @@ class WebsitePolicy
 {
     use HandlesAuthorization;
 
-    public function updateWebsite(User $user, Website $website)
+    public function ownerOrAdmin(User $user, Website $website)
+    {
+        return $user->id === $website->user_id || auth()->user()->role === config('constants.ROLE.ADMIN');
+    }
+
+    public function owner(User $user, Website $website)
     {
         return $user->id === $website->user_id;
     }
