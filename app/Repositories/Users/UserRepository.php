@@ -116,6 +116,8 @@ class UserRepository implements UserInterface
 
     public function list() : ?object
     {
-        return $this->model->paginate(config('constants.DEFAULT.LIMIT'));
+        return $this->model
+        ->where('role', config('constants.ROLE.USER'))
+        ->paginate(config('constants.DEFAULT.LIMIT'));
     }
 }
