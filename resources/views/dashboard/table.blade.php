@@ -1,5 +1,12 @@
 <div class="w-full mt-4 bg-blue-900 px-6 py-3">
-    <h3 class="text-white text-3xl">All Websites</h3>
+    <div class="flex justify-between">
+        <h3 class="text-white text-3xl flex-6">All Websites</h3>
+        @can('admin', auth()->user())
+        <a type="button" class="shadow bg-purple-500 flex-6 mb-4 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white p-2 rounded" href="{{ route('admin.dashboard') }}">
+            <i class="fa fa-chevron-left"></i> BACK
+        </a>
+        @endcan
+    </div>
     <table class="table-fixed w-full text-blue-800 border-gray-500">
         <thead>
             <tr class="text-gray-500">
@@ -41,12 +48,14 @@
                         <button type="submit" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-1 rounded text-sm ">Test</button>
                     </form>
                     @endcan
+                    @can('user', auth()->user())
                     <a type="button" class="shadow bg-purple-500 md:w-1/2 mb-4 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-1 rounded text-sm " href="{{ route('website.show',$website->id) }}">Edit</a>
                     <form action="{{route('website.delete', $website->id)}}" method="POST" class="md:w-1/2 mb-6">
                     @csrf
                     @method('DELETE')
                         <button type="submit" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white py-2 px-1 rounded text-sm ">Delete</button>
                     </form>
+                    @endcan
                 </td>
             </tr>
             @endforeach
