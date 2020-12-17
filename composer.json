@@ -16,9 +16,7 @@
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^1.0",
         "mll-lab/laravel-graphql-playground": "^2.1",
-        "nuwave/lighthouse": "^4.14",
-        "sendinblue/api-v3-sdk": "7.x.x",
-        "vansteen/laravel-sendinblue": "^1.4"
+        "nuwave/lighthouse": "^4.14"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
