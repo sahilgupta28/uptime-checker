@@ -9,6 +9,7 @@ class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
         'App\Models\Website' => 'App\Policies\WebsitePolicy',
+        'App\Models\User' => 'App\Policies\UserPolicy',
     ];
 
     public function boot()
