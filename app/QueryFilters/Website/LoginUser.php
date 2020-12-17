@@ -8,6 +8,6 @@ class LoginUser extends Filter
 {
     protected function applyFilter($builder)
     {
-        return $builder->where('user_id', auth()->user()->id);
+        return $builder->where('user_id', request('user_id') ?? auth()->user()->id);
     }
 }
