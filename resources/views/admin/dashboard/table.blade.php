@@ -14,10 +14,12 @@
             <tr>
                 <th class="border-gray-500 bg-gray-300 border px-4 py-2">{{$loop->iteration}}</th>
                 <td class="border-gray-500 bg-gray-300 border px-4 py-2">
-                    <a href="{{-- route('website.show',$website->id) --}}">{{$user->name}}</a></td>
+                    <a href="{{ route('admin.user.websites',$user->id) }}">{{$user->name}}</a></td>
                 <td class="border-gray-500 bg-gray-300 border px-4 py-2">{{$user->email ?? 'Social Login'}}</td>
                
                 <td class="border-gray-500 bg-gray-300 border px-1 py-2 w-full">
+                    <a type="button" class="shadow bg-purple-500 md:w-1/2 mb-4 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-1 rounded text-sm " href="{{ route('admin.user.websites',$user->id) }}">Websites</a>
+                    
                 </td>
             </tr>
             @endforeach
