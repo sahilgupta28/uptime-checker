@@ -97,8 +97,8 @@ class UserRepository implements UserInterface
         foreach (self::WEEK_DAYS as $key => $day) {
             $start_time = date('Y-m-d 00:00:00', strtotime("$day this week"));
             $end_time = date('Y-m-d 23:59:59', strtotime("$day this week"));
-            $query .= '(SELECT count(test_logs.id) FROM test_logs 
-                    WHERE test_logs.status = false 
+            $query .= '(SELECT count(test_logs.id) FROM test_logs
+                    WHERE test_logs.status = false
                     AND test_logs.website_id = W.id
                     AND test_logs.test_at BETWEEN' . "'" . $start_time . "' AND '" . $end_time . "')
                     as $day";
